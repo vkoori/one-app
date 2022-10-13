@@ -1,0 +1,22 @@
+{
+  "name": "vkoori/one-app",
+  "type": "library",
+  "description": "A minimalist php framework that can run in fpm or swoole coroutine mode",
+  "keywords": [
+    "swoole",
+    "framework",
+    "async",
+    "one"
+  ],
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">=8.1",
+    "vkoori/one": "v1.0.0",
+    "swoole/ide-helper": "@dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "App/"
+    }
+  }
+}
