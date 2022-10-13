@@ -1,0 +1,34 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: admin
+ * Date: 2018/11/7
+ * Time: 14:32
+ * php shell model --data="a=1" --data="b=1" --header="Accept-Language:en" --header="Accept:application-json"
+ */
+
+$_SERVER['REQUEST_METHOD'] = 'shell';
+
+$data = [];
+$header = [];
+
+foreach ($argv as $arg) {
+    $explodedArg = explode(separator: '=', string: $arg, limit: 2);
+    switch ($explodedArg[0]) {
+        case '--data':
+            parse_str($explodedArg[1], $mydata);
+            $data += $mydata;
+            break;
+        case '--header':
+            list($key, $value) = explode(separator: ':', string: $explodedArg[1], limit: 2);
+            $_SERVER['HTTP_' . strtoupper($key)] = $value;
+            break;
+        default:
+            // skip
+            break;
+    }
+}
+
+$_GET = $_POST = $_REQUEST = $data;
+
+require __DIR__ . '/index.php';
