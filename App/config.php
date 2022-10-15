@@ -1,4 +1,7 @@
 <?php
+
+date_default_timezone_set('UTC');
+
 \One\Database\Mysql\Connect::setConfig(config('mysql', true));
 // \One\Database\ClickHouse\Connect::setConfig(config('clickhouse', true));
 \One\Log::setConfig(config('log', true));

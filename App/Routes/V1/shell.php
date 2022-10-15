@@ -2,4 +2,7 @@
 
 use One\Http\Router;
 
-Router::shell('/model', \App\Controllers\Api\V1\Test::class . '@model');
+Router::shell('/route', \App\Controllers\Shell\Routing\Route::class . '@cache');
+Router::shell('/model', \App\Controllers\Shell\Model\Model::class . '@generate');
+Router::shell('/migrate', \App\Controllers\Shell\Migration\Migrate::class . '@up');
+Router::shell('/migrate:rollback', \App\Controllers\Shell\Migration\Migrate::class . '@down');

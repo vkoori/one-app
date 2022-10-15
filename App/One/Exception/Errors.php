@@ -24,7 +24,7 @@ class Errors extends Exception
 		return $this->errorCastToArray(message: $e->getMessage());
 	}
 
-	private function dbException(HttpException $e)
+	private function dbException(DbException $e)
 	{
 		error_report($e);
 		return $this->errorCastToArray(message: 'db error!');
