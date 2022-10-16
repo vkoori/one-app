@@ -5,5 +5,7 @@ one 框架项目实例化
 安装
 
 ```shell
-composer create-project vkoori/one-app
+composer create-project vkoori/one-app project_name
 ```
+
+edit .htaccess
