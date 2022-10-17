@@ -8,8 +8,8 @@ require __DIR__ . '/../vendor/vkoori/one/src/run.php';
 require __DIR__ . '/config.php';
 
 try {
-    $req = new \One\Http\Request();
-    $res = new \One\Http\Response($req);
+    $req = request();
+    $res = response($req);
 
     $router = new \One\Http\Router();
     list($req->class, $req->func, $mids, $action, $req->args, $req->as_name) = $router->explain($req->method(), $req->uri(), $req, $res);
