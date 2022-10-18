@@ -8,15 +8,14 @@ use One\Http\Response;
 
 class TestMiddle
 {
-	// public function __construct(Request $request, Response $response, ...$args)
+	// public function __construct(...$args)
 	// {
 	// 	var_dump($args);
 	// }
 
-	public function handler($next, Request $request, Response $response)
+	public function handler($next)
 	{
 		// throw new HttpException(
-		// 	response: $response,
 		// 	message: 'test', 
 		// 	code: 501
 		// );

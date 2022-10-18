@@ -13,7 +13,7 @@ try {
 
     $router = new \One\Http\Router();
     list($req->class, $req->func, $mids, $action, $req->args, $req->as_name) = $router->explain($req->method(), $req->uri(), $req, $res);
-    $f = $router->getExecAction($mids, $action, $req, $res);
+    $f = $router->getExecAction($mids, $action);
     echo $f();
 } catch (\One\Exceptions\ShellException $e) {
     echo colorLog(str: $e->getMessage(), type: 'e');
