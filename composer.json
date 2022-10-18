@@ -11,7 +11,7 @@
   "license": "Apache-2.0",
   "require": {
     "php": ">=8.1",
-    "vkoori/one": "v1.5.0",
+    "vkoori/one": "v1.6.1",
     "swoole/ide-helper": "@dev"
   },
   "autoload": {
