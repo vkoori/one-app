@@ -10,23 +10,39 @@ class BaseModel extends Model
 	CONST created_at = true;
 	CONST updated_at = true;
 
-	public function onBeforeUpdate(EventBuild $call, array $data)
+	private $now;
+
+	function __construct()
 	{
-		if (self::created_at) {
-			$data['created_at'] = date('Y-m-d h:i:s');
-		}
-		if (self::updated_at) {
-			$data['updated_at'] = date('Y-m-d h:i:s');
-		}
-		return $call->update($data);
+		$this->now = date('Y-m-d H:i:s');
 	}
 
-	public function onBeforeInsert(EventBuild $call, array $data)
+	public function onBeforeUpdate(EventBuild $call, array &$data)
 	{
 		if (self::updated_at) {
-			$data['updated_at'] = date('Y-m-d h:i:s');
+			$data['updated_at'] = $this->now;
 		}
-		return $call->update($data);
+	}
+
+	public function onBeforeInsert(EventBuild $call, array &$data, bool $is_multi)
+	{
+		if ($is_multi) {
+			foreach ($data as &$d) {
+				if (self::created_at) {
+					$d['created_at'] = $this->now;
+				}
+				if (self::updated_at) {
+					$d['updated_at'] = $this->now;
+				}
+			}
+		} else {
+			if (self::created_at) {
+				$data['created_at'] = $this->now;
+			}
+			if (self::updated_at) {
+				$data['updated_at'] = $this->now;
+			}
+		}
 	}
 
 }
